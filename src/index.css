@@ -2,104 +2,349 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Nature Mood — design system
+   All colors MUST be HSL. Each mood overrides the tokens on <html data-mood="..."> */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 210 40% 96%;
+    --foreground: 215 30% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100% / 0.5;
+    --card-foreground: 215 30% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 30% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 160 45% 40%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 30% 90%;
+    --secondary-foreground: 215 30% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 20% 92%;
+    --muted-foreground: 215 15% 40%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 160 50% 55%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 215 25% 80% / 0.3;
+    --input: 215 25% 80%;
+    --ring: 160 50% 55%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
+
+    /* Mood-driven tokens */
+    --mood-bg-from: 200 60% 85%;
+    --mood-bg-via: 180 50% 75%;
+    --mood-bg-to: 160 40% 60%;
+    --mood-glow: 180 70% 70%;
+    --mood-ink: 215 35% 15%;
+    --mood-ink-soft: 215 25% 30%;
+    --mood-card: 0 0% 100%;
+    --mood-card-alpha: 0.55;
+    --mood-accent: 160 60% 45%;
+    --mood-particle: 0 0% 100%;
 
     --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
+    --sidebar-foreground: 240 5% 26%;
+    --sidebar-primary: 240 6% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
+    --sidebar-accent: 240 5% 96%;
+    --sidebar-accent-foreground: 240 6% 10%;
     --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 217 91% 60%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+  /* ☁️ Calm — soft sky & clouds */
+  [data-mood="calm"] {
+    --mood-bg-from: 210 80% 88%;
+    --mood-bg-via: 200 70% 80%;
+    --mood-bg-to: 190 50% 70%;
+    --mood-glow: 200 90% 85%;
+    --mood-ink: 215 45% 18%;
+    --mood-ink-soft: 215 30% 35%;
+    --mood-accent: 200 85% 55%;
+    --mood-particle: 0 0% 100%;
+  }
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+  /* 🌧️ Rainy — dark clouds */
+  [data-mood="rainy"] {
+    --mood-bg-from: 220 25% 22%;
+    --mood-bg-via: 215 30% 30%;
+    --mood-bg-to: 210 35% 40%;
+    --mood-glow: 210 40% 50%;
+    --mood-ink: 210 30% 95%;
+    --mood-ink-soft: 210 20% 80%;
+    --mood-accent: 195 80% 65%;
+    --mood-particle: 200 80% 80%;
+  }
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+  /* 🌿 Fresh — green forest */
+  [data-mood="fresh"] {
+    --mood-bg-from: 95 50% 70%;
+    --mood-bg-via: 120 45% 45%;
+    --mood-bg-to: 140 55% 28%;
+    --mood-glow: 70 90% 75%;
+    --mood-ink: 120 50% 12%;
+    --mood-ink-soft: 120 30% 25%;
+    --mood-accent: 80 70% 50%;
+    --mood-particle: 40 80% 60%;
+  }
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+  /* 🌅 Sunset — orange-pink */
+  [data-mood="sunset"] {
+    --mood-bg-from: 30 100% 70%;
+    --mood-bg-via: 350 85% 65%;
+    --mood-bg-to: 280 60% 40%;
+    --mood-glow: 20 100% 75%;
+    --mood-ink: 350 50% 15%;
+    --mood-ink-soft: 350 30% 30%;
+    --mood-accent: 15 95% 60%;
+    --mood-particle: 30 100% 80%;
+  }
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+  /* 🌊 Ocean — waves */
+  [data-mood="ocean"] {
+    --mood-bg-from: 195 70% 55%;
+    --mood-bg-via: 210 75% 40%;
+    --mood-bg-to: 225 70% 22%;
+    --mood-glow: 185 90% 70%;
+    --mood-ink: 210 60% 95%;
+    --mood-ink-soft: 200 40% 85%;
+    --mood-accent: 175 85% 55%;
+    --mood-particle: 185 90% 85%;
+  }
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  /* 🌙 Night — starry */
+  [data-mood="night"] {
+    --mood-bg-from: 245 60% 12%;
+    --mood-bg-via: 255 55% 18%;
+    --mood-bg-to: 230 70% 8%;
+    --mood-glow: 45 100% 80%;
+    --mood-ink: 245 40% 95%;
+    --mood-ink-soft: 245 25% 75%;
+    --mood-accent: 260 80% 70%;
+    --mood-particle: 50 100% 90%;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
+  * { @apply border-border; }
+  html, body, #root { height: 100%; }
+  body {
+    @apply text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: hsl(var(--mood-ink));
+    transition: color 1.2s ease;
+    overflow: hidden;
+  }
+  h1, h2, h3 {
+    font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .mood-stage {
+    background: linear-gradient(
+      160deg,
+      hsl(var(--mood-bg-from)) 0%,
+      hsl(var(--mood-bg-via)) 50%,
+      hsl(var(--mood-bg-to)) 100%
+    );
+    transition: background 1.4s ease;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  .glass {
+    background: hsl(var(--mood-card) / var(--mood-card-alpha));
+    backdrop-filter: blur(18px) saturate(1.2);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    border: 1px solid hsl(var(--mood-ink) / 0.12);
   }
+
+  .mood-chip {
+    @apply relative flex flex-col items-center justify-center gap-2 rounded-2xl px-5 py-4 text-sm font-medium transition-all duration-500;
+    background: hsl(var(--mood-card) / 0.35);
+    color: hsl(var(--mood-ink));
+    border: 1px solid hsl(var(--mood-ink) / 0.15);
+    backdrop-filter: blur(14px);
+  }
+  .mood-chip:hover {
+    transform: translateY(-3px) scale(1.03);
+    background: hsl(var(--mood-card) / 0.6);
+    box-shadow: 0 10px 40px -10px hsl(var(--mood-glow) / 0.6);
+  }
+  .mood-chip[data-active="true"] {
+    background: hsl(var(--mood-accent) / 0.9);
+    color: hsl(var(--mood-ink) / 0.95);
+    border-color: hsl(var(--mood-accent));
+    box-shadow: 0 0 0 2px hsl(var(--mood-accent) / 0.3), 0 12px 50px -10px hsl(var(--mood-glow) / 0.8);
+  }
+
+  .icon-btn {
+    @apply inline-flex items-center justify-center rounded-full transition-all duration-300;
+    width: 2.75rem; height: 2.75rem;
+    background: hsl(var(--mood-card) / 0.5);
+    color: hsl(var(--mood-ink));
+    border: 1px solid hsl(var(--mood-ink) / 0.15);
+    backdrop-filter: blur(14px);
+  }
+  .icon-btn:hover {
+    background: hsl(var(--mood-accent) / 0.85);
+    color: hsl(var(--mood-ink));
+    transform: scale(1.06);
+  }
+}
+
+/* ——— Scene layers ——— */
+.scene { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+
+/* Clouds (calm) */
+.cloud {
+  position: absolute;
+  background: hsl(var(--mood-particle) / 0.8);
+  border-radius: 9999px;
+  filter: blur(8px);
+  animation: cloud-drift linear infinite;
+}
+@keyframes cloud-drift {
+  from { transform: translateX(-20vw); }
+  to { transform: translateX(120vw); }
+}
+
+/* Rain */
+.raindrop {
+  position: absolute;
+  top: -10%;
+  width: 1.5px;
+  height: 70px;
+  background: linear-gradient(to bottom, transparent, hsl(var(--mood-particle) / 0.7));
+  animation: rain-fall linear infinite;
+}
+@keyframes rain-fall {
+  0% { transform: translateY(-10vh); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0.4; }
+}
+
+/* Leaves */
+.leaf {
+  position: absolute;
+  top: -5%;
+  width: 14px; height: 14px;
+  background: hsl(var(--mood-particle));
+  border-radius: 0 100% 0 100%;
+  opacity: 0.8;
+  animation: leaf-fall linear infinite;
+}
+@keyframes leaf-fall {
+  0% { transform: translate(0, -10vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translate(30vw, 110vh) rotate(720deg); opacity: 0.3; }
+}
+
+/* Stars */
+.star {
+  position: absolute;
+  background: hsl(var(--mood-particle));
+  border-radius: 9999px;
+  animation: twinkle ease-in-out infinite;
+  box-shadow: 0 0 6px hsl(var(--mood-particle) / 0.8);
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Moon */
+.moon {
+  position: absolute;
+  top: 10%; right: 12%;
+  width: 110px; height: 110px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 35%, hsl(var(--mood-glow)), hsl(var(--mood-glow) / 0.3));
+  box-shadow: 0 0 80px hsl(var(--mood-glow) / 0.6), 0 0 160px hsl(var(--mood-glow) / 0.3);
+}
+
+/* Sun */
+.sun {
+  position: absolute;
+  bottom: 18%; left: 50%;
+  transform: translateX(-50%);
+  width: 180px; height: 180px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, hsl(var(--mood-glow)), hsl(var(--mood-glow) / 0.1) 70%);
+  filter: blur(2px);
+  animation: sun-pulse 6s ease-in-out infinite;
+}
+@keyframes sun-pulse {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.05); }
+}
+
+/* Light rays */
+.ray {
+  position: absolute;
+  top: -20%; left: 50%;
+  width: 3px; height: 140vh;
+  background: linear-gradient(to bottom, hsl(var(--mood-glow) / 0.5), transparent);
+  transform-origin: top center;
+  filter: blur(4px);
+}
+
+/* Ocean waves */
+.wave {
+  position: absolute;
+  bottom: -20%; left: -10%;
+  width: 220%; height: 60%;
+  background: radial-gradient(ellipse at center top, transparent 40%, hsl(var(--mood-particle) / 0.25) 50%, hsl(var(--mood-bg-to)) 70%);
+  border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+  animation: wave-move ease-in-out infinite;
+}
+@keyframes wave-move {
+  0%, 100% { transform: translateX(-5%) translateY(0); }
+  50% { transform: translateX(5%) translateY(-20px); }
+}
+
+/* Floating particles */
+.particle {
+  position: absolute;
+  background: hsl(var(--mood-particle));
+  border-radius: 9999px;
+  filter: blur(1px);
+  opacity: 0.6;
+  animation: float linear infinite;
+}
+@keyframes float {
+  0% { transform: translateY(110vh) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-10vh) translateX(40px); opacity: 0; }
+}
+
+/* Lightning flash */
+.flash {
+  position: absolute; inset: 0;
+  background: hsl(0 0% 100%);
+  opacity: 0;
+  animation: flash 9s infinite;
+  pointer-events: none;
+}
+@keyframes flash {
+  0%, 92%, 100% { opacity: 0; }
+  93% { opacity: 0.6; }
+  94% { opacity: 0; }
+  95% { opacity: 0.5; }
+  96% { opacity: 0; }
+}
+
+/* Fade transition for content */
+.fade-swap { animation: fade-swap 0.8s ease; }
+@keyframes fade-swap {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
