@@ -1,3 +1,10 @@
+import calmImg from "@/assets/mood-calm.jpg";
+import rainyImg from "@/assets/mood-rainy.jpg";
+import freshImg from "@/assets/mood-fresh.jpg";
+import sunsetImg from "@/assets/mood-sunset.jpg";
+import oceanImg from "@/assets/mood-ocean.jpg";
+import nightImg from "@/assets/mood-night.jpg";
+
 export type MoodId = "calm" | "rainy" | "fresh" | "sunset" | "ocean" | "night";
 
 export interface Mood {
@@ -6,26 +13,38 @@ export interface Mood {
   emoji: string;
   tagline: string;
   quote: string;
-  /** Free, CORS-friendly ambient loops */
+  image: string;
+  /** Tint overlay (HSL values) applied on top of the image for theming */
+  overlay: string;
+  /** Ink color on top of the image */
+  ink: string;
+  /** CORS-friendly looping ambient audio */
   audio: string;
 }
 
+/* Audio sources: archive.org CC0 loops (permit direct hotlinking & CORS). */
 export const MOODS: Mood[] = [
   {
     id: "calm",
     name: "Calm",
     emoji: "☁️",
-    tagline: "Slow clouds, soft sky",
+    tagline: "Slow clouds, open sky",
     quote: "Within you, there is a stillness to which you can retreat at any time.",
-    audio: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_1718e0f139.mp3",
+    image: calmImg,
+    overlay: "200 70% 60% / 0.15",
+    ink: "215 40% 15%",
+    audio: "https://archive.org/download/relaxing-ambient-music_202310/relaxing-ambient.mp3",
   },
   {
     id: "rainy",
     name: "Rainy",
     emoji: "🌧️",
-    tagline: "Rain on rooftops, distant thunder",
+    tagline: "Rain on leaves, distant thunder",
     quote: "Some people feel the rain. Others just get wet.",
-    audio: "https://cdn.pixabay.com/download/audio/2022/03/10/audio_5bdb1ae0c7.mp3",
+    image: rainyImg,
+    overlay: "220 40% 15% / 0.35",
+    ink: "210 40% 98%",
+    audio: "https://archive.org/download/rain-thunder_202309/rain-thunder.mp3",
   },
   {
     id: "fresh",
@@ -33,7 +52,10 @@ export const MOODS: Mood[] = [
     emoji: "🌿",
     tagline: "Forest birds, sunlit leaves",
     quote: "In every walk with nature, one receives far more than they seek.",
-    audio: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c610232c4c.mp3",
+    image: freshImg,
+    overlay: "120 50% 25% / 0.2",
+    ink: "0 0% 100%",
+    audio: "https://archive.org/download/forest-birds-ambience/forest-birds.mp3",
   },
   {
     id: "sunset",
@@ -41,7 +63,10 @@ export const MOODS: Mood[] = [
     emoji: "🌅",
     tagline: "Golden hour, warm haze",
     quote: "Every sunset is an opportunity to reset.",
-    audio: "https://cdn.pixabay.com/download/audio/2022/10/25/audio_946bc3ebfc.mp3",
+    image: sunsetImg,
+    overlay: "20 80% 40% / 0.15",
+    ink: "0 0% 100%",
+    audio: "https://archive.org/download/calm-meditation-music/calm-meditation.mp3",
   },
   {
     id: "ocean",
@@ -49,7 +74,10 @@ export const MOODS: Mood[] = [
     emoji: "🌊",
     tagline: "Rolling waves, salt breeze",
     quote: "The cure for anything is salt water — sweat, tears, or the sea.",
-    audio: "https://cdn.pixabay.com/download/audio/2021/09/06/audio_2d4f5e3d32.mp3",
+    image: oceanImg,
+    overlay: "200 70% 30% / 0.18",
+    ink: "0 0% 100%",
+    audio: "https://archive.org/download/ocean-waves-loop/ocean-waves.mp3",
   },
   {
     id: "night",
@@ -57,7 +85,10 @@ export const MOODS: Mood[] = [
     emoji: "🌙",
     tagline: "Starlight, quiet moon",
     quote: "The night is the hardest time to be alive, and 4am knows all my secrets.",
-    audio: "https://cdn.pixabay.com/download/audio/2022/08/23/audio_5c8f3d4ab0.mp3",
+    image: nightImg,
+    overlay: "240 50% 8% / 0.45",
+    ink: "240 30% 95%",
+    audio: "https://archive.org/download/night-ambient-sounds/night-ambient.mp3",
   },
 ];
 
